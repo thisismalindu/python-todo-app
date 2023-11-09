@@ -2,8 +2,8 @@ import os
 import time
 
 # Init todo
-todo_file_path = os.path.expanduser('~/todo_file.conf')
-open(todo_file_path,'a')
+TODO_FILE_PATH = os.path.expanduser('~/todo_file.conf')
+open(TODO_FILE_PATH,'a')
 todo_list = []
 
 
@@ -11,7 +11,7 @@ def clear_screen():
     os.system('cls' if os.name=='nt' else 'clear')
 
 def write_todo():
-    todo_file = open(todo_file_path,'w')
+    todo_file = open(TODO_FILE_PATH,'w')
     todo_string = ""
     for todo_item in todo_list:
         todo_item += '\n'
@@ -19,7 +19,7 @@ def write_todo():
     todo_file.write(todo_string)
 
 def read_todo():
-    todo_file = open(todo_file_path,'r')
+    todo_file = open(TODO_FILE_PATH,'r')
     new_todo_list = todo_file.readlines()
     for todo_item in new_todo_list:
         todo_list.append(todo_item.replace('\n',''))
