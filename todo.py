@@ -7,7 +7,7 @@ open(todo_file_path,'a')
 todo_list = []
 
 
-def cls():
+def clear_screen():
     os.system('cls' if os.name=='nt' else 'clear')
 
 def write_todo():
@@ -36,8 +36,8 @@ Todo List
 -----------------
 ''')
 
-def remove_todo_item():
-    cls()
+def remove_todo():
+    clear_screen()
     printTodo()
     index = input("Which element do you want to remove ('/c' for cancel)? ")
     if index.lower()=="/c":
@@ -57,14 +57,14 @@ def remove_todo_item():
         else:
             print('Invalid index. Please try again.')
             time.sleep(1)
-            remove_todo_item()
+            remove_todo()
     except ValueError:
         print('Invalid input. Please enter a valid index.')
         time.sleep(1)
-        remove_todo_item()
+        remove_todo()
 
-def delete_todo():
-    cls()
+def clear_todo():
+    clear_screen()
     printTodo()
     user_input = input("""
 This action is irreversible.
@@ -77,7 +77,7 @@ Are you sure you want to clear the Todo List (Y/n)? """).lower()
         print('Todo List Cleared')
         time.sleep(1)
     else:
-        delete_todo()
+        clear_todo()
 
 
 def add_todo():
@@ -103,19 +103,19 @@ Enter the number:'''))
 read_todo()
 while True:
 
-    cls()
+    clear_screen()
     printTodo()
 
     match main_menu():
         case 2:
             add_todo()
         case 3:
-            cls()
-            remove_todo_item()
+            clear_screen()
+            remove_todo()
         case 4:
-            delete_todo()
+            clear_todo()
         case 5:
-            cls()
+            clear_screen()
             break
         case _:
             print('Invalid choice. Please select a valid option.')
