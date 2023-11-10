@@ -12,25 +12,33 @@ Therefore, this app is a pretty simple app without much going on.
 3. Remove Items
 4. Clear List
 5. Saves list to file (persistent)
+6. Backup when cleared
 
 ## How to run
 
 To run this app, you need Python installed. If you don't have it installed already, you can download it from the official [Python website](https://www.python.org/downloads/).
 After that,
 
-1. **Clone the repository:**
+1. **Install Colorama**:
+   This application requires the `colorama` library. So first you need to install it.
+   ```bash
+   pip install colorama
+   # or
+   conda install -c anaconda colorama
+   ```
+2. **Clone the repository:**
 
    ```
    git clone https://github.com/thisismalindu/python-todo-app.git
    ```
 
-2. **Navigate to the project directory:**
+3. **Navigate to the project directory:**
 
    ```
    cd python-todo-app
    ```
 
-3. **Run the application:**
+4. **Run the application:**
    ```
    python todo.py
    ```
@@ -38,3 +46,9 @@ After that,
 The application will start, and you can follow the on-screen menu to perform various tasks with your todo list.
 
 The code is well organized and should be easy to read through and understand.
+
+## Backup Functionality
+
+This app includes a backup system to make sure you don't accidently remove an item or delete your entire todo list. When you remove a todo item or clear your todo list, the app will create a backup with the current todo list. You can later restore this backup using the **Restore Backup** functionality.
+
+**NOTE:** The backup system is not like a version control system, atleast at the moment. So whenever you remove an item or clear the todo list, the backup file is overwritten. So if you want to keep backups of certain lists, you will have to either have copies of the `todo_file.conf` or `todo_file_backup.conf` files or just copy the list from the console and save it somewhere. Version control is a feature we are hoping to integrate in the future.
