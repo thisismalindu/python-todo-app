@@ -52,7 +52,6 @@ This app includes a backup system to make sure you don't accidently remove an it
 **NOTE:** The backup system is not like a version control system, atleast at the moment. So whenever you remove an item or clear the todo list, the backup file is overwritten. So if you want to keep backups of certain lists, you will have to either have copies of the `todo_file.conf` or `todo_file_backup.conf` files or just copy the list from the console and save it somewhere. Version control is a feature we are hoping to integrate in the future.
 
 ## Screenshots
-![When First Run python-todo-app](https://github.com/thisismalindu/python-todo-app/assets/39488765/4c9c38e4-261f-42f4-bc82-ae459eb417ea)
-![Add new Item](https://github.com/thisismalindu/python-todo-app/assets/39488765/2b3a63a2-505d-4131-ac47-b29656ff7af3)
-![Remove Item](https://github.com/thisismalindu/python-todo-app/assets/39488765/5407f6be-f968-4947-8cb1-5c3dc83bb344)
-![Clear List](https://github.com/thisismalindu/python-todo-app/assets/39488765/ad416e2c-7151-41f0-9429-2bc3bd13ddf6)
+| ![When First Run python-todo-app](https://github.com/thisismalindu/python-todo-app/assets/39488765/4c9c38e4-261f-42f4-bc82-ae459eb417ea) | ![Add new Item](https://github.com/thisismalindu/python-todo-app/assets/39488765/2b3a63a2-505d-4131-ac47-b29656ff7af3) |
+| --- | --- |
+| ![Remove Item](https://github.com/thisismalindu/python-todo-app/assets/39488765/5407f6be-f968-4947-8cb1-5c3dc83bb344) | ![Clear List](https://github.com/thisismalindu/python-todo-app/assets/39488765/ad416e2c-7151-41f0-9429-2bc3bd13ddf6) |
