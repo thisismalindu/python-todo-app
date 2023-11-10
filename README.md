@@ -2,9 +2,6 @@
 
 > A simple CLI based Todo app made in Python
 
-This is my first python program. I want to take on the challenge to create something like this in python based on my knowledge in other programming languages like C++ and JavaScript.
-Therefore, this app is a pretty simple app without much going on.
-
 ## Features
 
 1. View Todo List
