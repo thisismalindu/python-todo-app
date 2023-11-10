@@ -58,9 +58,10 @@ def remove_todo():
         index = int(index)
         if 1 <= index <= len(todo_list):
             todo_backup()
+            item = todo_list[index - 1]
             del todo_list[index - 1]
             write_todo()
-            print(Style.BRIGHT + Fore.GREEN+'Item Removed!')
+            print(Style.BRIGHT + Fore.GREEN+'Item Removed!: ' + Style.RESET_ALL + item)
             time.sleep(1)
         else:
             print(Style.BRIGHT + Fore.RED+'Invalid index. Please try again.')
@@ -97,12 +98,13 @@ def add_todo():
         return
     todo_list.append(item)
     write_todo()
-    print(Style.BRIGHT + Fore.GREEN+'Item Added!')
+    print(Style.BRIGHT + Fore.GREEN + 'Item Added!: ' + Style.RESET_ALL + item)
     time.sleep(1)
 
 def main_menu():
     print(Style.BRIGHT+ Fore.CYAN + 'What do you want to do?')
-    return int(input('''
+    try:
+        return int(input('''
     1. View Todo List
     2. Add Todo Item
     3. Remove Todo Item
@@ -110,13 +112,15 @@ def main_menu():
     5. Quit\n
 
 Enter the number:'''))
+    except ValueError:
+        print(Style.BRIGHT + Fore.RED +'Invalid input. Please enter a valid index.')
+        time.sleep(1)
+        return 1
 
 read_todo()
 while True:
-
     clear_screen()
     printTodo()
-
     match main_menu():
         case 1:
             pass
@@ -131,5 +135,5 @@ while True:
             clear_screen()
             break
         case _:
-            print('Invalid choice. Please select a valid option.')
+            print(Style.BRIGHT + Fore.RED + 'Invalid choice. Please select a valid option.')
             time.sleep(1)
