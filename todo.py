@@ -5,9 +5,15 @@ init(autoreset=True)
 
 
 # Init todo
-TODO_FILE_PATH = os.path.expanduser('~/todo_file.conf')
-TODO_FILE_PATH_BACKUP = os.path.expanduser('~/todo_file_backup.conf')
+TODO_FILE_PATH = os.path.expanduser('~/python-todo-app/todo_file.conf')
+TODO_FILE_PATH_BACKUP = os.path.expanduser('~/python-todo-app/todo_file_backup.conf')
+
+try:
+    os.mkdir(os.path.expanduser('~/python-todo-app/'))
+except FileExistsError:
+    pass
 open(TODO_FILE_PATH,'a')
+
 todo_list = []
 
 def todo_backup():
