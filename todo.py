@@ -57,6 +57,7 @@ def remove_todo():
     try:
         index = int(index)
         if 1 <= index <= len(todo_list):
+            todo_backup()
             del todo_list[index - 1]
             write_todo()
             print(Style.BRIGHT + Fore.GREEN+'Item Removed!')
