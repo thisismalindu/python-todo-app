@@ -21,10 +21,8 @@ After that,
 
 1. **Install Colorama**:
    This application requires the `colorama` library. So first you need to install it.
-   ```bash
+   ```
    pip install colorama
-   # or
-   conda install -c anaconda colorama
    ```
 2. **Clone the repository:**
 
