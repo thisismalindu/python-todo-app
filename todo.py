@@ -1,10 +1,22 @@
 import os
 import time
+from colorama import init, Fore, Back, Style
+init(autoreset=True)
+
 
 # Init todo
 TODO_FILE_PATH = os.path.expanduser('~/todo_file.conf')
+TODO_FILE_PATH_BACKUP = os.path.expanduser('~/todo_file_backup.conf')
 open(TODO_FILE_PATH,'a')
 todo_list = []
+
+def todo_backup():
+    todo_file_backup = open(TODO_FILE_PATH_BACKUP,'w')
+    todo_string = ""
+    for todo_item in todo_list:
+        todo_item += '\n'
+        todo_string += todo_item
+    todo_file_backup.write(todo_string)
 
 
 def clear_screen():
@@ -25,73 +37,65 @@ def read_todo():
         todo_list.append(todo_item.replace('\n',''))
 
 def printTodo():
-    print('''
------------------
-
-Todo List
-''')
+    print(Style.BRIGHT+ Back.LIGHTYELLOW_EX + Style.NORMAL+ Fore.BLACK + 'Todo List\n')
     for item in todo_list:
         print(str(todo_list.index(item)+1) +". " + item)
-    print('''
------------------
-''')
+    print()    
 
 def remove_todo():
     clear_screen()
     printTodo()
-    index = input("Which element do you want to remove ('/c' for cancel)? ")
+    index = input(Style.BRIGHT + Fore.RED+ "Which element do you want to remove ('/c' for cancel)? "+Style.RESET_ALL)
     if index.lower()=="/c":
         return
-    # index = int(index)
-    # todo_list.pop(index-1) # Since 0 based index
-    # write_todo()
-    # print('Item Removed!')
-    # time.sleep(1)
     try:
         index = int(index)
         if 1 <= index <= len(todo_list):
             del todo_list[index - 1]
             write_todo()
-            print('Item Removed!')
+            print(Style.BRIGHT + Fore.GREEN+'Item Removed!')
             time.sleep(1)
         else:
-            print('Invalid index. Please try again.')
+            print(Style.BRIGHT + Fore.RED+'Invalid index. Please try again.')
             time.sleep(1)
             remove_todo()
     except ValueError:
-        print('Invalid input. Please enter a valid index.')
+        print(Style.BRIGHT + Fore.RED+'Invalid input. Please enter a valid index.')
         time.sleep(1)
         remove_todo()
 
 def clear_todo():
     clear_screen()
     printTodo()
-    user_input = input("""
+    user_input = input(Style.BRIGHT + Fore.RED + """
 This action is irreversible.
-Are you sure you want to clear the Todo List (Y/n)? """).lower()
+Are you sure you want to clear the Todo List (Y/n)? """ + Style.RESET_ALL).lower()
     if user_input=="n":
         return
     elif user_input == "y" or user_input=="":
+        todo_backup()
         todo_list.clear()
         write_todo()
-        print('Todo List Cleared')
+        print(Style.BRIGHT + Fore.GREEN+'Todo List Cleared')
         time.sleep(1)
     else:
+        print(Style.BRIGHT + Fore.RED+'Invalid input. Please enter a valid index.')
+        time.sleep(1)
         clear_todo()
 
 
 def add_todo():
-    item = input("Enter a todo item ('/c' for cancel): ")
+    item = input(Style.BRIGHT+ Fore.LIGHTYELLOW_EX + "Enter a todo item ('/c' for cancel): " + Style.RESET_ALL)
     if item.lower()=="/c":
         return
     todo_list.append(item)
     write_todo()
-    print('Item Added!')
+    print(Style.BRIGHT + Fore.GREEN+'Item Added!')
     time.sleep(1)
 
 def main_menu():
+    print(Style.BRIGHT+ Fore.CYAN + 'What do you want to do?')
     return int(input('''
-What do you want to do?
     1. View Todo List
     2. Add Todo Item
     3. Remove Todo Item
@@ -107,6 +111,8 @@ while True:
     printTodo()
 
     match main_menu():
+        case 1:
+            pass
         case 2:
             add_todo()
         case 3:
