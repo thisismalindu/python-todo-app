@@ -12,7 +12,7 @@ Therefore, this app is a pretty simple app without much going on.
 3. Remove Items
 4. Clear List
 5. Saves list to file (persistent)
-6. Backup when cleared
+6. Backup System
 
 ## How to run
 
